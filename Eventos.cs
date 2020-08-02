@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -79,11 +75,8 @@ namespace XMLTools
         [XmlElement(ElementName = "verAplic")]
         public string verAplic { get; set; }
     }
-
     public class GridViewApresenta: IdeEvento
     {
         public string idEvento { get; set; }
     }
-
-
 }

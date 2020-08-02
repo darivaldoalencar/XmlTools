@@ -1,17 +1,10 @@
-﻿using Microsoft.SqlServer.Server;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace XMLTools
@@ -95,9 +88,14 @@ namespace XMLTools
         {
             using (FolderBrowserDialog fbd = new FolderBrowserDialog())
             {
+                if (Directory.Exists(txtPath.Text))
+                {
+                    fbd.SelectedPath = txtPath.Text;
+                }                
+
                 if (fbd.ShowDialog() == DialogResult.OK)
                 {
-                    txtPath.Text = fbd.SelectedPath;
+                    txtPath.Text = fbd.SelectedPath;                    
                     DirectoryInfo Dir = new DirectoryInfo(txtPath.Text);
                     FileInfo[] Files = Dir.GetFiles("eFinanceira_evt*.xml", SearchOption.TopDirectoryOnly);
                     lista.Clear();
