@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.gbxTop = new System.Windows.Forms.GroupBox();
             this.btnConsolidarWeb = new System.Windows.Forms.Button();
             this.btnExportaRecibo = new System.Windows.Forms.Button();
@@ -52,6 +53,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.pnlOpMov = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtCodVersao = new System.Windows.Forms.TextBox();
             this.btnOkOp = new System.Windows.Forms.Button();
             this.btnCancelaOp = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -60,6 +63,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.lbxResultados = new System.Windows.Forms.ListBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.gbxTop.SuspendLayout();
             this.gbxFiltros.SuspendLayout();
             this.gbxTipo.SuspendLayout();
@@ -328,6 +332,8 @@
             // pnlOpMov
             // 
             this.pnlOpMov.BackColor = System.Drawing.Color.NavajoWhite;
+            this.pnlOpMov.Controls.Add(this.label2);
+            this.pnlOpMov.Controls.Add(this.txtCodVersao);
             this.pnlOpMov.Controls.Add(this.btnOkOp);
             this.pnlOpMov.Controls.Add(this.btnCancelaOp);
             this.pnlOpMov.Controls.Add(this.label1);
@@ -335,13 +341,29 @@
             this.pnlOpMov.Controls.Add(this.rbOpFinanc);
             this.pnlOpMov.Location = new System.Drawing.Point(218, 6);
             this.pnlOpMov.Name = "pnlOpMov";
-            this.pnlOpMov.Size = new System.Drawing.Size(228, 112);
+            this.pnlOpMov.Size = new System.Drawing.Size(280, 171);
             this.pnlOpMov.TabIndex = 6;
             this.pnlOpMov.Visible = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(133, 44);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(95, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Cod. Versão  Mov.";
+            // 
+            // txtCodVersao
+            // 
+            this.txtCodVersao.Location = new System.Drawing.Point(136, 60);
+            this.txtCodVersao.Name = "txtCodVersao";
+            this.txtCodVersao.Size = new System.Drawing.Size(100, 20);
+            this.txtCodVersao.TabIndex = 5;
+            // 
             // btnOkOp
             // 
-            this.btnOkOp.Location = new System.Drawing.Point(38, 76);
+            this.btnOkOp.Location = new System.Drawing.Point(38, 118);
             this.btnOkOp.Name = "btnOkOp";
             this.btnOkOp.Size = new System.Drawing.Size(75, 23);
             this.btnOkOp.TabIndex = 4;
@@ -351,7 +373,7 @@
             // 
             // btnCancelaOp
             // 
-            this.btnCancelaOp.Location = new System.Drawing.Point(119, 76);
+            this.btnCancelaOp.Location = new System.Drawing.Point(119, 118);
             this.btnCancelaOp.Name = "btnCancelaOp";
             this.btnCancelaOp.Size = new System.Drawing.Size(75, 23);
             this.btnCancelaOp.TabIndex = 3;
@@ -374,7 +396,7 @@
             // rbOpPrev
             // 
             this.rbOpPrev.AutoSize = true;
-            this.rbOpPrev.Location = new System.Drawing.Point(141, 42);
+            this.rbOpPrev.Location = new System.Drawing.Point(12, 74);
             this.rbOpPrev.Name = "rbOpPrev";
             this.rbOpPrev.Size = new System.Drawing.Size(74, 17);
             this.rbOpPrev.TabIndex = 1;
@@ -408,7 +430,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(948, 208);
+            this.tabPage2.Size = new System.Drawing.Size(949, 208);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Processamento";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -419,8 +441,13 @@
             this.lbxResultados.FormattingEnabled = true;
             this.lbxResultados.Location = new System.Drawing.Point(3, 3);
             this.lbxResultados.Name = "lbxResultados";
-            this.lbxResultados.Size = new System.Drawing.Size(942, 202);
+            this.lbxResultados.Size = new System.Drawing.Size(943, 202);
             this.lbxResultados.TabIndex = 0;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // Form1
             // 
@@ -482,6 +509,9 @@
         private System.Windows.Forms.RadioButton rbOpFinanc;
         private System.Windows.Forms.Button btnCancelaOp;
         private System.Windows.Forms.Button btnOkOp;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtCodVersao;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
 

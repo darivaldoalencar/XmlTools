@@ -80,19 +80,35 @@ namespace XMLTools
 
                     progressBar1.Maximum = listaFiltrada.Count();
                     progressBar1.Value += 0;
+                    string coluna;
+                    if (tabela.ToUpper() == "EXTRATOMOVPREVIN1571")
+                        coluna = "IDCTRLMOVPREVIN1571";
+                    else
+                        coluna = "IDCTRLMOVFINANCIN1571";
+
+                    int contador = 1;
 
                     foreach (GridViewApresenta item in listaFiltrada)
                     {
                         if (!string.IsNullOrEmpty(item.numeroRecibo))
                         {
-                            sw.WriteLine(string.Format("UPDATE {3} SET NUMRECIBO= '{0}' WHERE IDXML = '{1}' AND CPF = '{2}' ;",
+                            sw.WriteLine(string.Format("UPDATE {0} SET NUMRECIBO= '{1}' WHERE {2} = {3} AND CPF= '{4}';",
+                                tabela,
                                item.numeroRecibo,
-                               item.idEvento,
-                               item.cpf,
-                               tabela));
+                               coluna,
+                               txtCodVersao.Text,
+                               item.cpf
+                               ));
+
+                            contador++;
+
+                            if (contador % 1000 == 0)
+                                sw.WriteLine("commit;");
                         }
                         progressBar1.Value += progressBar1.Value < progressBar1.Maximum ? 1 : 0;
                     }
+
+                    sw.WriteLine("commit;");
 
                     progressBar1.Value = progressBar1.Maximum;
 
@@ -430,9 +446,10 @@ namespace XMLTools
             pnlOpMov.Location = new Point((tabControl1.Width - pnlOpMov.Width) / 2, 5);
             rbOpFinanc.Checked = false;
             rbOpPrev.Checked = false;
+            txtCodVersao.Text = string.Empty;
             pnlOpMov.Visible = true;
         }
-       
+
         private void btnCancelaOp_Click(object sender, EventArgs e)
         {
             rbOpFinanc.Checked = false;
@@ -442,11 +459,34 @@ namespace XMLTools
 
         private void btnOkOp_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtCodVersao.Text))
+            {
+                MessageBox.Show("Informe o código de versão", "Campo não informado ou inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if ((!rbOpFinanc.Checked) && (!rbOpPrev.Checked))
+            {
+                MessageBox.Show("Selecione o tipo de movimentação", "Campo não informado ou inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                try
+                {
+                    int.Parse(txtCodVersao.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("Informe o código de versão válido", "Campo não informado ou inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
             if (rbOpPrev.Checked)
                 ExportaConsolidacaoWEB("EXTRATOMOVPREVIN1571");
             else
-                ExportaConsolidacaoWEB("extratomovfinancin1571");
-           
+                ExportaConsolidacaoWEB("EXTRATOMOVFINANCIN1571");
+
             pnlOpMov.Visible = false;
         }
     }
